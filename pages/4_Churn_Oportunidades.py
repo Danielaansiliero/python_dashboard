@@ -56,11 +56,11 @@ df = load_and_process_data()
 churn_detector = ChurnDetector()
 opportunity_finder = OpportunityFinder()
 
-# Tabs principais
-tab_churn, tab_opportunities, tab_combined = st.tabs([
+# Tabs principais - Visão Combinada primeiro
+tab_combined, tab_churn, tab_opportunities = st.tabs([
+    "📊 Visão Combinada",
     "⚠️ Risco de Churn",
-    "💡 Oportunidades",
-    "📊 Visão Combinada"
+    "💡 Oportunidades"
 ])
 
 # ========== TAB: RISCO DE CHURN ==========
