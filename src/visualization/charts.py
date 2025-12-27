@@ -373,3 +373,117 @@ class DashboardCharts:
         )
 
         return fig
+
+    @staticmethod
+    def risk_distribution_donut(df: pd.DataFrame) -> go.Figure:
+        """
+        Gráfico de rosca para distribuição de níveis de risco.
+
+        Args:
+            df: DataFrame com coluna 'risk_level'
+
+        Returns:
+            Figure do Plotly
+        """
+        risk_counts = df['risk_level'].value_counts()
+
+        # Cores específicas para cada nível de risco
+        risk_colors = {
+            'alto_risco': '#e74c3c',      # Vermelho
+            'medio_risco': '#f39c12',     # Laranja
+            'baixo_risco': '#f1c40f',     # Amarelo
+            'sem_risco': '#2ecc71'        # Verde
+        }
+
+        # Nomes amigáveis para exibição
+        risk_labels = {
+            'alto_risco': 'Alto Risco',
+            'medio_risco': 'Médio Risco',
+            'baixo_risco': 'Baixo Risco',
+            'sem_risco': 'Sem Risco'
+        }
+
+        labels = [risk_labels.get(r, r) for r in risk_counts.index]
+        colors = [risk_colors.get(r, '#95a5a6') for r in risk_counts.index]
+
+        fig = go.Figure(data=[go.Pie(
+            labels=labels,
+            values=risk_counts.values,
+            hole=0.6,
+            marker_colors=colors,
+            textinfo='percent+label',
+            textposition='outside',
+            hovertemplate='%{label}<br>%{value} avaliações<br>%{percent}<extra></extra>'
+        )])
+
+        fig.update_layout(
+            showlegend=False,
+            annotations=[{
+                'text': f'<b>{len(df):,}</b><br>total',
+                'x': 0.5, 'y': 0.5,
+                'font_size': 14,
+                'showarrow': False
+            }],
+            margin=dict(t=20, b=20, l=20, r=20),
+            height=300
+        )
+
+        return fig
+
+    @staticmethod
+    def customer_profile_donut(df: pd.DataFrame) -> go.Figure:
+        """
+        Gráfico de rosca para distribuição de perfis de clientes.
+
+        Args:
+            df: DataFrame com coluna 'customer_profile'
+
+        Returns:
+            Figure do Plotly
+        """
+        profile_counts = df['customer_profile'].value_counts()
+
+        # Cores específicas para cada perfil
+        profile_colors = {
+            'advogado_marca': '#9b59b6',       # Roxo
+            'cliente_fiel': '#3498db',          # Azul
+            'altamente_satisfeito': '#2ecc71',  # Verde
+            'cliente_satisfeito': '#1abc9c',    # Turquesa
+            'cliente_comum': '#95a5a6'          # Cinza
+        }
+
+        # Nomes amigáveis para exibição
+        profile_labels = {
+            'advogado_marca': 'Promotor da Marca',
+            'cliente_fiel': 'Cliente Fiel',
+            'altamente_satisfeito': 'Muito Satisfeito',
+            'cliente_satisfeito': 'Satisfeito',
+            'cliente_comum': 'Cliente Comum'
+        }
+
+        labels = [profile_labels.get(p, p) for p in profile_counts.index]
+        colors = [profile_colors.get(p, '#95a5a6') for p in profile_counts.index]
+
+        fig = go.Figure(data=[go.Pie(
+            labels=labels,
+            values=profile_counts.values,
+            hole=0.6,
+            marker_colors=colors,
+            textinfo='percent+label',
+            textposition='outside',
+            hovertemplate='%{label}<br>%{value} clientes<br>%{percent}<extra></extra>'
+        )])
+
+        fig.update_layout(
+            showlegend=False,
+            annotations=[{
+                'text': f'<b>{len(df):,}</b><br>total',
+                'x': 0.5, 'y': 0.5,
+                'font_size': 14,
+                'showarrow': False
+            }],
+            margin=dict(t=20, b=20, l=20, r=20),
+            height=300
+        )
+
+        return fig

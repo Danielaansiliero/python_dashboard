@@ -116,10 +116,7 @@ with tab_churn:
 
     with col_gauge2:
         st.subheader("📋 Distribuição de Risco")
-        risk_dist = df['risk_level'].value_counts()
-        fig_risk = DashboardCharts.sentiment_donut(
-            pd.DataFrame({'sentimento': df['risk_level']})
-        )
+        fig_risk = DashboardCharts.risk_distribution_donut(df)
         st.plotly_chart(fig_risk, use_container_width=True)
 
     st.divider()
@@ -232,10 +229,7 @@ with tab_opportunities:
 
     with col_opp2:
         st.subheader("👥 Perfis de Clientes")
-        profile_dist = df['customer_profile'].value_counts()
-        fig_profiles = DashboardCharts.sentiment_donut(
-            pd.DataFrame({'sentimento': df['customer_profile']})
-        )
+        fig_profiles = DashboardCharts.customer_profile_donut(df)
         st.plotly_chart(fig_profiles, use_container_width=True)
 
     st.divider()
