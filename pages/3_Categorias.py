@@ -12,7 +12,7 @@ from src.preprocessing.text_cleaner import TextCleaner
 from src.preprocessing.category_extractor import CategoryExtractor
 from src.visualization.charts import DashboardCharts
 
-st.set_page_config(page_title="Análise por Categoria", page_icon="🏷️", layout="wide")
+# Nota: st.set_page_config() deve ser chamado apenas no app.py principal
 
 
 @st.cache_data

@@ -14,7 +14,7 @@ from src.preprocessing.category_extractor import CategoryExtractor
 from src.visualization.charts import DashboardCharts
 from src.visualization.wordcloud_gen import WordCloudGenerator
 
-st.set_page_config(page_title="Análise de Sentimentos", page_icon="😊", layout="wide")
+# Nota: st.set_page_config() deve ser chamado apenas no app.py principal
 
 
 @st.cache_data
@@ -144,6 +144,7 @@ with tab2:
                 "Palavras mais frequentes (Positivo)"
             )
             st.pyplot(fig_pos)
+            plt.close(fig_pos)
 
     with col_wc2:
         st.subheader("😞 Avaliações Negativas")
@@ -153,6 +154,7 @@ with tab2:
                 "Palavras mais frequentes (Negativo)"
             )
             st.pyplot(fig_neg)
+            plt.close(fig_neg)
 
     st.divider()
 
@@ -227,7 +229,7 @@ with tab3:
         st.success(f"Encontradas {len(df_filtered)} avaliações com '{search_term}'")
 
     # Exibir avaliações
-    num_display = st.slider("Número de avaliações a exibir", 5, 50, 20)
+    num_display = st.slider("Número de avaliações a exibir", 5, 50, 20, key="sentiment_display_slider")
 
     df_display = df_filtered.head(num_display)
 

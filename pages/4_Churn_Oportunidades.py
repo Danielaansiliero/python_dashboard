@@ -15,7 +15,7 @@ from src.preprocessing.category_extractor import CategoryExtractor
 from src.visualization.charts import DashboardCharts
 from src.visualization.wordcloud_gen import WordCloudGenerator
 
-st.set_page_config(page_title="Churn & Oportunidades", page_icon="🎯", layout="wide")
+# Nota: st.set_page_config() deve ser chamado apenas no app.py principal
 
 
 @st.cache_data
@@ -135,11 +135,11 @@ with tab_churn:
         col_f1, col_f2 = st.columns(2)
 
         with col_f1:
-            top_n = st.slider("Número de avaliações a exibir", 5, 50, 10)
+            top_n = st.slider("Número de avaliações a exibir", 5, 50, 10, key="churn_display_slider")
 
         with col_f2:
             min_score = st.slider("Score mínimo de churn", 0, 100,
-                                 int(df_alto_risco['churn_score'].min()))
+                                 int(df_alto_risco['churn_score'].min()), key="churn_min_score_slider")
 
         df_display = df_alto_risco[df_alto_risco['churn_score'] >= min_score].head(top_n)
 
@@ -248,7 +248,7 @@ with tab_opportunities:
                                                     ascending=False)
 
     if len(df_oportunidades) > 0:
-        top_opp_n = st.slider("Número de oportunidades a exibir", 5, 30, 10)
+        top_opp_n = st.slider("Número de oportunidades a exibir", 5, 30, 10, key="opp_display_slider")
 
         df_top_opp = df_oportunidades.head(top_opp_n)
 
