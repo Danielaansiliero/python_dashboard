@@ -146,7 +146,8 @@ with tab_churn:
         for idx, row in df_display.iterrows():
             with st.expander(
                 f"⚠️ Score: {row['churn_score']:.1f} | Nota: {row['nota']} | "
-                f"Categoria: {row['categoria']}"
+                f"Categoria: {row['categoria']}",
+                key=f"churn_expander_{idx}"
             ):
                 st.markdown(f"**Avaliação:**")
                 st.info(row['avaliacao'])
@@ -265,7 +266,8 @@ with tab_opportunities:
 
             with st.expander(
                 f"{emoji} Score: {row['opportunity_score']:.1f} | "
-                f"Nota: {row['nota']} | Perfil: {row['customer_profile']}"
+                f"Nota: {row['nota']} | Perfil: {row['customer_profile']}",
+                key=f"opportunity_expander_{idx}"
             ):
                 st.markdown(f"**Avaliação:**")
                 st.success(row['avaliacao'])

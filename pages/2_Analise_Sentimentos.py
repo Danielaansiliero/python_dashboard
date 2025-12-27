@@ -238,7 +238,8 @@ with tab3:
         star_rating = "⭐" * int(row['nota'])
 
         with st.expander(
-            f"{sentiment_emoji} {star_rating} | Categoria: {row.get('categoria', 'N/A')}"
+            f"{sentiment_emoji} {star_rating} | Categoria: {row.get('categoria', 'N/A')}",
+            key=f"sentiment_expander_{idx}"
         ):
             st.markdown(row['avaliacao'])
 
