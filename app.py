@@ -24,9 +24,10 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS customizado
+# CSS customizado com responsividade
 st.markdown("""
 <style>
+    /* === ESTILOS BASE === */
     .main-header {
         font-size: 2.5rem;
         font-weight: 700;
@@ -44,6 +45,110 @@ st.markdown("""
         padding: 1rem;
         border-radius: 8px;
         color: white;
+    }
+
+    /* === RESPONSIVIDADE === */
+
+    /* Mobile (até 768px) */
+    @media (max-width: 768px) {
+        .main-header {
+            font-size: 1.5rem !important;
+        }
+
+        /* Ajusta colunas para empilhar verticalmente */
+        [data-testid="column"] {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            min-width: 100% !important;
+        }
+
+        /* Reduz padding geral */
+        .main .block-container {
+            padding: 1rem 0.5rem !important;
+        }
+
+        /* Ajusta métricas */
+        [data-testid="stMetricValue"] {
+            font-size: 1.2rem !important;
+        }
+
+        /* Ajusta sidebar */
+        [data-testid="stSidebar"] {
+            min-width: 100% !important;
+        }
+
+        /* Ajusta gráficos */
+        .js-plotly-plot {
+            width: 100% !important;
+        }
+
+        /* Ajusta expanders */
+        .streamlit-expanderHeader {
+            font-size: 0.9rem !important;
+        }
+
+        /* Ajusta tabs */
+        .stTabs [data-baseweb="tab-list"] {
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .stTabs [data-baseweb="tab"] {
+            font-size: 0.8rem !important;
+            padding: 0.5rem !important;
+        }
+    }
+
+    /* Tablet (768px - 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .main-header {
+            font-size: 2rem !important;
+        }
+
+        .main .block-container {
+            padding: 1.5rem 1rem !important;
+        }
+
+        [data-testid="stMetricValue"] {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    /* Desktop grande (acima de 1200px) */
+    @media (min-width: 1200px) {
+        .main .block-container {
+            max-width: 1400px !important;
+            padding: 2rem 3rem !important;
+        }
+    }
+
+    /* === MELHORIAS GERAIS === */
+
+    /* Scrollbar customizada */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* Transições suaves */
+    .stMetric, .stButton, [data-testid="stExpander"] {
+        transition: all 0.3s ease;
+    }
+
+    /* Hover em métricas */
+    .stMetric:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 </style>
 """, unsafe_allow_html=True)
