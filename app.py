@@ -251,7 +251,7 @@ with col_business2:
     st.plotly_chart(fig_opportunity, use_container_width=True)
 
     st.metric("Alta Oportunidade", opportunity_stats['alta_oportunidade'])
-    st.metric("Advogados da Marca", opportunity_stats['advogados_marca'])
+    st.metric("Promotores da Marca", opportunity_stats['advogados_marca'])
 
 st.divider()
 

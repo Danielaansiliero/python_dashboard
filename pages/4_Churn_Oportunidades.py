@@ -215,7 +215,7 @@ with tab_opportunities:
                  delta=f"{(media_opp/len(df)*100):.1f}%")
 
     with col3:
-        st.metric("📢 Advogados da Marca", advogados)
+        st.metric("📢 Promotores da Marca", advogados)
 
     with col4:
         st.metric("💚 Clientes Fiéis", fieis)
@@ -361,7 +361,7 @@ with tab_combined:
     with col_rec2:
         st.markdown("### 🚀 Ações de Crescimento")
         st.markdown(f"""
-        1. **Engajar {advogados} advogados** da marca
+        1. **Engajar {advogados} promotores** da marca
         2. Criar programas de fidelidade para {fieis} clientes fiéis
         3. Incentivar cross-sell e upsell
         4. Solicitar referências de clientes satisfeitos
