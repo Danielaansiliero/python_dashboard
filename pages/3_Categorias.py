@@ -187,11 +187,11 @@ if categoria_selecionada:
 
     num_show = st.slider("Quantidade a exibir", 5, 30, 10, key="cat_slider")
 
-    for idx, row in df_cat_filtered.head(num_show).iterrows():
+    for i, (idx, row) in enumerate(df_cat_filtered.head(num_show).iterrows()):
         sentiment_emoji = "😊" if row['sentimento'] == 'positivo' else "😞"
         star_rating = "⭐" * int(row['nota'])
 
-        with st.expander(f"{sentiment_emoji} {star_rating} - Nota {row['nota']}", key=f"category_expander_{idx}"):
+        with st.expander(f"{sentiment_emoji} {star_rating} - Nota {row['nota']}", key=f"category_expander_{i}"):
             st.markdown(row['avaliacao'])
 
 st.divider()

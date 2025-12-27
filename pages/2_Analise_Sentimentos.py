@@ -233,13 +233,13 @@ with tab3:
 
     df_display = df_filtered.head(num_display)
 
-    for idx, row in df_display.iterrows():
+    for i, (idx, row) in enumerate(df_display.iterrows()):
         sentiment_emoji = "😊" if row['sentimento'] == 'positivo' else "😞"
         star_rating = "⭐" * int(row['nota'])
 
         with st.expander(
             f"{sentiment_emoji} {star_rating} | Categoria: {row.get('categoria', 'N/A')}",
-            key=f"sentiment_expander_{idx}"
+            key=f"sentiment_expander_{i}"
         ):
             st.markdown(row['avaliacao'])
 

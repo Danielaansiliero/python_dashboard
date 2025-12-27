@@ -143,11 +143,11 @@ with tab_churn:
 
         df_display = df_alto_risco[df_alto_risco['churn_score'] >= min_score].head(top_n)
 
-        for idx, row in df_display.iterrows():
+        for i, (idx, row) in enumerate(df_display.iterrows()):
             with st.expander(
                 f"⚠️ Score: {row['churn_score']:.1f} | Nota: {row['nota']} | "
                 f"Categoria: {row['categoria']}",
-                key=f"churn_expander_{idx}"
+                key=f"churn_expander_{i}"
             ):
                 st.markdown(f"**Avaliação:**")
                 st.info(row['avaliacao'])
@@ -253,7 +253,7 @@ with tab_opportunities:
 
         df_top_opp = df_oportunidades.head(top_opp_n)
 
-        for idx, row in df_top_opp.iterrows():
+        for i, (idx, row) in enumerate(df_top_opp.iterrows()):
             profile_emoji = {
                 'advogado_marca': '📢',
                 'cliente_fiel': '💚',
@@ -267,7 +267,7 @@ with tab_opportunities:
             with st.expander(
                 f"{emoji} Score: {row['opportunity_score']:.1f} | "
                 f"Nota: {row['nota']} | Perfil: {row['customer_profile']}",
-                key=f"opportunity_expander_{idx}"
+                key=f"opportunity_expander_{i}"
             ):
                 st.markdown(f"**Avaliação:**")
                 st.success(row['avaliacao'])
