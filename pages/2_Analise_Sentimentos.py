@@ -237,10 +237,7 @@ with tab3:
         sentiment_emoji = "😊" if row['sentimento'] == 'positivo' else "😞"
         star_rating = "⭐" * int(row['nota'])
 
-        with st.expander(
-            f"{sentiment_emoji} {star_rating} | Categoria: {row.get('categoria', 'N/A')}",
-            key=f"sentiment_expander_{i}"
-        ):
+        with st.expander(f"{sentiment_emoji} {star_rating} | Categoria: {row.get('categoria', 'N/A')} [{i}]"):
             st.markdown(row['avaliacao'])
 
 st.divider()

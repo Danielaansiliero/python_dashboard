@@ -191,7 +191,7 @@ if categoria_selecionada:
         sentiment_emoji = "😊" if row['sentimento'] == 'positivo' else "😞"
         star_rating = "⭐" * int(row['nota'])
 
-        with st.expander(f"{sentiment_emoji} {star_rating} - Nota {row['nota']}", key=f"category_expander_{i}"):
+        with st.expander(f"{sentiment_emoji} {star_rating} - Nota {row['nota']} [{i}]"):
             st.markdown(row['avaliacao'])
 
 st.divider()
